@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+<html lang="la">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f2eb">
+<title>Lorem ipsum</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f4f2eb;
+  --ink: #20231e;
+  --green: #586047;
+  --muted: #77786f;
+  --line: #d7d5cc;
+  --g: clamp(20px, 4.7vw, 72px);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+::selection { background: var(--green); color: white; }
+
+/* NAVIGATION */
+
+header {
+  height: 76px;
+  margin: 0 var(--g);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.brand-name {
+  font-size: 11px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+}
+
+nav a {
+  position: relative;
+  font-size: 10px;
+  color: #55574f;
+  padding: 10px 0;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .35s var(--ease);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-contact {
+  border: 1px solid var(--line);
+  padding: 11px 17px;
+  transition: background .3s, color .3s;
+}
+
+.nav-contact:hover {
+  background: var(--ink);
+  color: white;
+}
+
+/* HERO */
+
+.hero {
+  padding: 38px var(--g) 75px;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--muted);
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: clamp(25px, 5vw, 80px);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  animation: enter .9s var(--ease) both;
+}
+
+.hero h1 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(68px, 10.5vw, 148px);
+  font-weight: 500;
+  letter-spacing: -.095em;
+  line-height: .86;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--green);
+}
+
+.hero-description {
+  max-width: 340px;
+  margin-top: 32px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.circle-link {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-top: 28px;
+  border: 1px solid #a9aa9f;
+  border-radius: 50%;
+  font-size: 22px;
+  transition: background .35s, color .35s,
+              transform .35s var(--ease);
+}
+
+.circle-link:hover {
+  background: var(--green);
+  color: white;
+  transform: rotate(45deg);
+}
+
+.hero-visual {
+  position: relative;
+  height: clamp(380px, 43vw, 600px);
+  padding-right: 8%;
+  padding-bottom: 7%;
+  animation: enter 1s .15s var(--ease) both;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 5% 0 0 8%;
+  border: 1px solid #b7b7aa;
+  border-radius: 48% 48% 0 0;
+}
+
+.hero-photo {
+  position: relative;
+  width: 90%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 48% 48% 0 0;
+  background: #d8d8cc;
+}
+
+.hero-photo img {
+  transition: transform 1.2s var(--ease);
+}
+
+.hero-photo:hover img {
+  transform: scale(1.045);
+}
+
+.hero-count {
+  position: absolute;
+  bottom: 7%;
+  right: 0;
+  padding: 10px 0 10px 15px;
+  background: var(--bg);
+  font-size: 10px;
+}
+
+/* SHARED */
+
+.eyebrow {
+  margin-bottom: 23px;
+  font-size: 9px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.copy {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.95;
+  max-width: 380px;
+}
+
+.section-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -.065em;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #a5a59a;
+  font-size: 11px;
+  transition: gap .35s var(--ease);
+}
+
+.text-link:hover { gap: 30px; }
+
+.text-link span { font-size: 18px; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ABOUT: IMAGE LEFT, TEXT RIGHT */
+
+.about {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: clamp(35px, 4vw, 65px);
+  padding: 0 var(--g) 100px;
+}
+
+.about-photo {
+  height: clamp(300px, 32vw, 450px);
+  overflow: hidden;
+  background: #deded3;
+}
+
+.about-photo img,
+.gallery-photo img,
+.wide-photo img {
+  transition: transform 1s var(--ease);
+}
+
+.about-photo:hover img,
+.gallery-photo:hover img,
+.wide-photo:hover img {
+  transform: scale(1.04);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr .7fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.about-main { padding: 15px 0; }
+
+.about-main .section-title { margin-bottom: 24px; }
+
+.about-details {
+  height: 100%;
+  border-left: 1px solid var(--line);
+  padding-left: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.detail-icon {
+  width: 32px;
+  flex-shrink: 0;
+  font-size: 25px;
+  color: var(--green);
+}
+
+.detail p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #686a61;
+}
+
+/* GALLERY */
+
+.gallery {
+  padding: 25px var(--g) 100px;
+}
+
+.gallery-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.gallery-heading .section-title { max-width: 450px; }
+
+.gallery-heading .copy { justify-self: end; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.gallery-card:nth-child(2) { margin-top: 70px; }
+
+.gallery-photo {
+  height: clamp(280px, 35vw, 490px);
+  overflow: hidden;
+  background: #deded3;
+}
+
+.gallery-card:nth-child(2) .gallery-photo {
+  height: clamp(250px, 30vw, 410px);
+}
+
+.gallery-caption {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+
+.gallery-caption span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* WIDE PHOTO */
+
+.wide-photo {
+  position: relative;
+  margin: 0 var(--g) 100px;
+  height: clamp(300px, 44vw, 570px);
+  overflow: hidden;
+  background: #454b3b;
+}
+
+.wide-photo img { filter: brightness(.7); }
+
+.wide-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: clamp(25px, 5vw, 70px);
+  color: white;
+  background: linear-gradient(0deg, rgba(0,0,0,.4), transparent 70%);
+}
+
+.wide-overlay .section-title {
+  max-width: 700px;
+  font-size: clamp(42px, 7vw, 85px);
+}
+
+.wide-overlay .eyebrow { color: #e2e4db; }
+
+/* CONTACT */
+
+.contact {
+  margin: 0 var(--g) 50px;
+  padding: clamp(30px, 5vw, 65px);
+  background: var(--green);
+  color: var(--bg);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact .eyebrow { color: #d3d7ca; }
+
+.contact .section-title {
+  font-size: clamp(38px, 5.5vw, 68px);
+}
+
+.contact .copy {
+  color: #e0e2d8;
+  margin-top: 18px;
+}
+
+.contact-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  white-space: nowrap;
+  padding: 15px 20px;
+  border: 1px solid rgba(255,255,255,.65);
+  font-size: 10px;
+  transition: background .3s, color .3s;
+}
+
+.contact-action:hover {
+  background: var(--bg);
+  color: var(--green);
+}
+
+/* FOOTER */
+
+footer {
+  margin: 0 var(--g);
+  padding: 25px 0 30px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a,
+.footer-note {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.footer-links a:hover { color: var(--ink); }
+
+/* ANIMATIONS */
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .hero-layout {
+    grid-template-columns: .9fr 1.1fr;
+    gap: 20px;
+  }
+
+  .hero h1 { font-size: clamp(62px, 10vw, 95px); }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-photo { height: 55vw; max-height: 500px; }
+
+  .about-content { grid-template-columns: 1fr .7fr; }
+}
+
+@media (max-width: 600px) {
+  header { height: 68px; }
+
+  .brand-name { font-size: 9px; }
+
+  nav { gap: 12px; }
+  nav a { font-size: 9px; }
+
+  .nav-contact { display: none; }
+
+  .hero { padding-top: 28px; padding-bottom: 55px; }
+
+  .hero-meta { margin-bottom: 30px; }
+
+  .hero-layout { grid-template-columns: 1fr; gap: 35px; }
+
+  .hero h1 { font-size: clamp(76px, 18vw, 115px); }
+
+  .hero-description { margin-top: 24px; }
+
+  .hero-visual {
+    height: 105vw;
+    max-height: 550px;
+    padding-right: 7%;
+  }
+
+  .about-content { grid-template-columns: 1fr; }
+
+  .about-details {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 25px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-heading { grid-template-columns: 1fr; gap: 18px; }
+
+  .gallery-heading .copy { justify-self: start; }
+
+  .gallery-grid { grid-template-columns: 1fr; gap: 35px; }
+
+  .gallery-card:nth-child(2) { margin-top: 0; }
+
+  .gallery-photo,
+  .gallery-card:nth-child(2) .gallery-photo {
+    height: 80vw;
+    max-height: 470px;
+  }
+
+  .wide-photo { height: 100vw; max-height: 520px; }
+
+  .contact { grid-template-columns: 1fr; gap: 30px; }
+
+  .contact-action { justify-self: start; }
+
+  footer { flex-wrap: wrap; }
+
+  .footer-links { gap: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#top" class="brand">
+    <span class="brand-icon">+</span>
+    <span class="brand-name">Lorem ipsum</span>
+  </a>
+
+  <nav>
+    <a href="#about">Lorem</a>
+    <a href="#gallery">Ipsum</a>
+    <a href="#contact">Dolor</a>
+    <a href="#contact" class="nav-contact">Lorem ipsum</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-meta">
+      <span>Lorem ipsum</span>
+      <span>01 / 04</span>
+    </div>
+
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <h1>Lorem<span>ipsum.</span></h1>
+
+        <p class="hero-description">
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor.
+        </p>
+
+        <a href="#about" class="circle-link" aria-label="Lorem ipsum">→</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo">
+          <img
+            src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1400&q=85"
+            alt="Lorem ipsum"
+            fetchpriority="high"
+          >
+        </div>
+        <span class="hero-count">01 / 04</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-photo reveal">
+      <img
+        src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=85"
+        alt="Lorem ipsum"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="about-content reveal">
+      <div class="about-main">
+        <p class="eyebrow">Lorem ipsum</p>
+        <h2 class="section-title">Lorem ipsum dolor sit amet.</h2>
+
+        <p class="copy" style="margin-top:22px">
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <a href="#gallery" class="text-link">
+          Lorem ipsum <span>→</span>
+        </a>
+      </div>
+
+      <div class="about-details">
+        <div class="detail">
+          <span class="detail-icon">◇</span>
+          <p>Lorem ipsum<br>dolor sit amet</p>
+        </div>
+
+        <div class="detail">
+          <span class="detail-icon">⌁</span>
+          <p>Consectetur<br>adipiscing elit</p>
+        </div>
+
+        <div class="detail">
+          <span class="detail-icon">○</span>
+          <p>Sed do eiusmod<br>tempor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="gallery-heading reveal">
+      <div>
+        <p class="eyebrow">Lorem ipsum</p>
+        <h2 class="section-title">Lorem ipsum dolor sit amet.</h2>
+      </div>
+
+      <p class="copy">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <article class="gallery-card reveal">
+        <div class="gallery-photo">
+          <img
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85"
+            alt="Lorem ipsum"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="gallery-caption">
+          <span>Lorem ipsum</span>
+          <span>01</span>
+        </div>
+      </article>
+
+      <article class="gallery-card reveal">
+        <div class="gallery-photo">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=85"
+            alt="Lorem ipsum"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="gallery-caption">
+          <span>Dolor sit amet</span>
+          <span>02</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wide-photo reveal">
+    <img
+      src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85"
+      alt="Lorem ipsum"
+      loading="lazy"
+    >
+
+    <div class="wide-overlay">
+      <p class="eyebrow">Lorem ipsum</p>
+      <h2 class="section-title">Lorem ipsum<br>dolor sit amet.</h2>
+    </div>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <div>
+      <p class="eyebrow">Lorem ipsum</p>
+      <h2 class="section-title">Lorem ipsum dolor sit amet.</h2>
+      <p class="copy">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore.
+      </p>
+    </div>
+
+    <a class="contact-action" href="mailto:example@example.com">
+      Lorem ipsum <span>→</span>
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <a class="footer-brand" href="#top">
+    <span class="brand-icon">+</span>
+    <span>Lorem ipsum</span>
+  </a>
+
+  <div class="footer-links">
+    <a href="#about">Lorem</a>
+    <a href="#gallery">Ipsum</a>
+    <a href="#contact">Dolor</a>
+  </div>
+
+  <span class="footer-note">Lorem ipsum</span>
+</footer>
+
+<script>
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -35px 0px"
+  });
+
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
+}
+</script>
+
+</body>
+</html>
