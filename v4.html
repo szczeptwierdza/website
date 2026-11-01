@@ -4,18 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lorem ipsum — Version 04</title>
+<title>Lorem ipsum — Version 4.1</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --paper: #f4f1e9;
-  --ink: #20211d;
-  --olive: #5c6349;
-  --olive-light: #dce0d1;
-  --line: rgba(32,33,29,.32);
+  --ink: #252720;
+  --olive: #62694f;
+  --muted: #77786d;
+  --line: rgba(37,39,32,.23);
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", sans-serif;
 }
@@ -44,30 +44,25 @@ img {
   object-fit: cover;
 }
 
-button, a { -webkit-tap-highlight-color: transparent; }
-
 .container {
-  width: min(1440px, 100%);
-  margin: auto;
-  padding-inline: 5%;
+  width: min(1240px, calc(100% - 100px));
+  margin: 0 auto;
 }
 
-/* NAVIGATION */
+/* HEADER */
 
 header {
-  height: 84px;
+  height: 82px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
-  position: relative;
-  z-index: 10;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
   font-size: 13px;
 }
 
@@ -78,34 +73,32 @@ header {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 24px;
-  font-weight: 300;
-  transition: background .3s, color .3s, transform .3s;
+  font-size: 23px;
+  transition: .3s;
 }
 
 .brand:hover .brand-symbol {
+  transform: rotate(90deg);
   background: var(--ink);
   color: var(--paper);
-  transform: rotate(90deg);
 }
 
 nav {
   display: flex;
-  gap: 34px;
   align-items: center;
+  gap: 32px;
   font-size: 12px;
 }
 
 nav a {
   position: relative;
-  padding: 8px 0;
 }
 
-nav a::after {
+nav a:not(.nav-pill)::after {
   content: "";
   position: absolute;
-  bottom: 2px;
   left: 0;
+  bottom: -6px;
   width: 0;
   height: 1px;
   background: var(--ink);
@@ -116,145 +109,75 @@ nav a:hover::after { width: 100%; }
 
 .nav-pill {
   border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 12px 20px;
+  padding: 11px 19px;
+  border-radius: 50px;
 }
 
-/* TYPOGRAPHY */
+/* GENERAL */
 
 .eyebrow {
   font-size: 11px;
   letter-spacing: .13em;
   text-transform: uppercase;
+  color: var(--muted);
 }
 
-h1, h2, h3, p { margin-top: 0; }
-
-h1, h2 {
+h1, h2, h3 {
+  margin-top: 0;
   font-weight: 400;
-  letter-spacing: -.055em;
+  letter-spacing: -.05em;
 }
 
 h1 {
-  font-size: clamp(65px, 9vw, 132px);
-  line-height: .82;
-  margin: 25px 0 30px;
+  font-size: clamp(72px, 8vw, 116px);
+  line-height: .88;
+  margin: 25px 0;
 }
 
 h1 em {
-  display: block;
   color: var(--olive);
   font-family: var(--serif);
   font-weight: 500;
 }
 
 h2 {
-  font-size: clamp(38px, 5vw, 67px);
-  line-height: 1.02;
-  margin-bottom: 23px;
+  font-size: clamp(38px, 4.5vw, 60px);
+  line-height: 1.05;
+  margin: 18px 0;
 }
 
 p {
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.8;
-  color: #62625a;
 }
 
 .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
-  padding-bottom: 7px;
+  gap: 18px;
   border-bottom: 1px solid var(--line);
-  font-size: 12px;
+  padding-bottom: 8px;
   margin-top: 12px;
+  font-size: 12px;
 }
 
 .text-link span {
-  font-size: 20px;
+  font-size: 19px;
   transition: transform .3s;
 }
 
-.text-link:hover span { transform: translateX(6px); }
-
-/* HERO */
-
-.hero {
-  min-height: 560px;
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  align-items: center;
-  gap: 4%;
-  padding-top: 50px;
-  padding-bottom: 65px;
-}
-
-.hero-copy {
-  padding-left: 4%;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-copy p { max-width: 340px; }
-
-.hero-media {
-  position: relative;
-  width: 82%;
-  height: 405px;
-  margin-left: 4%;
-}
-
-.hero-photo {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  border-radius: 48% 48% 0 0;
-  z-index: 2;
-}
-
-.hero-photo img { transition: transform 1s; }
-.hero-media:hover .hero-photo img { transform: scale(1.045); }
-
-.hero-outline {
-  position: absolute;
-  width: 100%;
-  height: 82%;
-  top: 6%;
-  left: 19%;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-}
-
-.hero-dot {
-  position: absolute;
-  right: -28%;
-  top: 43%;
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  background: var(--olive);
-  z-index: 3;
-  animation: float 5s ease-in-out infinite;
-}
-
-.hero-index {
-  position: absolute;
-  right: -21%;
-  bottom: 0;
-  font-size: 12px;
-  white-space: nowrap;
-}
+.text-link:hover span { transform: translateX(5px); }
 
 .round-link {
-  margin-top: 25px;
+  width: 52px;
+  height: 52px;
   border: 1px solid var(--ink);
-  width: 53px;
-  height: 53px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  font-size: 22px;
-  transition: background .3s, color .3s, transform .3s;
+  font-size: 21px;
+  transition: .3s;
 }
 
 .round-link:hover {
@@ -263,192 +186,280 @@ p {
   transform: rotate(-35deg);
 }
 
-/* ORGANIC ABOUT SECTION */
+/* HERO */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+  padding: 75px 35px 100px;
+}
+
+.hero-copy {
+  max-width: 500px;
+}
+
+.hero-copy p {
+  max-width: 340px;
+}
+
+.hero-copy .round-link { margin-top: 25px; }
+
+.hero-visual {
+  height: 440px;
+  position: relative;
+  padding: 0 30px 0 0;
+}
+
+.hero-photo {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 48% 48% 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-photo img {
+  transition: transform .8s;
+}
+
+.hero-visual:hover img { transform: scale(1.04); }
+
+.hero-outline {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  right: -15px;
+  top: 7%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.hero-dot {
+  position: absolute;
+  z-index: 3;
+  right: -28px;
+  top: 43%;
+  width: 56px;
+  height: 56px;
+  background: var(--olive);
+  border-radius: 50%;
+}
+
+.hero-number {
+  position: absolute;
+  right: 0;
+  bottom: -35px;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+/* ABOUT */
 
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 10%;
-  padding: 35px 0 115px;
+  gap: 85px;
+  padding: 30px 0 120px;
 }
 
 .about-visual {
-  height: 350px;
-  width: 110%;
-  margin-left: -12%;
+  height: 355px;
   position: relative;
+  padding-right: 35px;
 }
 
 .about-photo {
-  overflow: hidden;
   height: 100%;
-  border-radius: 0 50% 50% 0;
+  overflow: hidden;
+  border-radius: 0 180px 180px 0;
 }
 
 .about-outline {
   position: absolute;
-  right: -18%;
+  right: 0;
   top: 10%;
-  width: 35%;
   height: 80%;
+  width: 65px;
   border: 1px solid var(--line);
   border-radius: 50%;
 }
 
 .about-copy {
-  display: grid;
-  grid-template-columns: 1fr 145px;
-  gap: 30px;
-  align-items: center;
+  max-width: 480px;
 }
 
-.about-copy p { max-width: 410px; }
+.about-copy p { max-width: 420px; }
 
-.side-photo {
-  height: 255px;
-  border-radius: 50% 50% 0 0;
+.about-small-photo {
+  width: 135px;
+  height: 195px;
   overflow: hidden;
-  transform: translateY(18px);
-}
-
-/* FLOATING SHAPES */
-
-.shape-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: 5%;
-  padding: 15px 2% 125px;
-}
-
-.gallery-copy { align-self: center; }
-
-.gallery-copy p { max-width: 300px; }
-
-.gallery-photo {
-  overflow: hidden;
-  position: relative;
-}
-
-.gallery-photo img { transition: transform .8s; }
-.gallery-photo:hover img { transform: scale(1.06); }
-
-.gallery-photo.lake {
-  height: 320px;
-  border-radius: 50% 50% 0 0;
-  margin-top: 25px;
-}
-
-.gallery-photo.fire {
-  height: 225px;
-  width: 100%;
-  border-radius: 50%;
-}
-
-.fire-wrap {
-  position: relative;
-  padding: 28px 0;
-}
-
-.fire-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0 -5%;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-}
-
-.fire-wrap::after {
-  content: "";
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  background: var(--olive);
-  top: 5px;
-  left: 5%;
-}
-
-.gallery-photo.tent {
-  height: 315px;
-  border-radius: 50% 50% 0 0;
-  margin-top: -25px;
-}
-
-/* CAPSULE SECTION */
-
-.capsule-section { padding: 0 0 115px; }
-
-.capsule {
-  min-height: 330px;
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  background: var(--olive);
-  color: var(--paper);
-  overflow: hidden;
-  border-radius: 100px 0 100px 100px;
-  position: relative;
-}
-
-.capsule-copy {
-  align-self: center;
-  padding: 55px 12%;
-  position: relative;
-  z-index: 2;
-}
-
-.capsule-copy p { color: rgba(255,255,255,.75); }
-
-.capsule h2 { font-family: var(--serif); }
-
-.capsule .round-link {
-  border-color: rgba(255,255,255,.7);
+  border-radius: 100px 100px 0 0;
+  margin-top: 30px;
   margin-left: auto;
 }
 
-.capsule .round-link:hover {
+/* GALLERY */
+
+.gallery {
+  padding: 0 0 125px;
+}
+
+.gallery-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.gallery-heading h2 {
+  max-width: 460px;
+  margin-bottom: 0;
+}
+
+.gallery-heading p {
+  max-width: 290px;
+  margin-bottom: 5px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.gallery-item {
+  min-width: 0;
+}
+
+.gallery-image {
+  overflow: hidden;
+  height: 310px;
+  position: relative;
+}
+
+.gallery-image img {
+  transition: transform .8s;
+}
+
+.gallery-item:hover .gallery-image img {
+  transform: scale(1.05);
+}
+
+.gallery-image.arch {
+  border-radius: 50% 50% 0 0;
+}
+
+.gallery-image.circle {
+  height: 270px;
+  border-radius: 50%;
+  margin-top: 40px;
+}
+
+.gallery-image.side-arch {
+  border-radius: 0 0 50% 50%;
+}
+
+.gallery-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  font-size: 12px;
+}
+
+.gallery-caption span:last-child {
+  color: var(--muted);
+}
+
+/* GREEN FEATURE */
+
+.feature {
+  padding-bottom: 110px;
+}
+
+.feature-inner {
+  min-height: 330px;
+  background: var(--olive);
+  color: var(--paper);
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  overflow: hidden;
+  border-radius: 85px 0 85px 85px;
+}
+
+.feature-copy {
+  padding: 50px 55px;
+  align-self: center;
+}
+
+.feature-copy .eyebrow { color: #d4d8c8; }
+
+.feature-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 4vw, 54px);
+}
+
+.feature-copy p { color: rgba(255,255,255,.75); }
+
+.feature-copy .round-link {
+  color: var(--paper);
+  border-color: rgba(255,255,255,.65);
+  margin-top: 12px;
+}
+
+.feature-copy .round-link:hover {
   background: var(--paper);
   color: var(--olive);
 }
 
-.capsule-image {
+.feature-photo {
   min-height: 330px;
   overflow: hidden;
-  border-radius: 50% 0 100px 50%;
-  margin-left: -30px;
+  border-radius: 50% 0 85px 50%;
 }
 
-.capsule-image img { transition: transform 1s; }
-.capsule:hover .capsule-image img { transform: scale(1.04); }
+.feature-photo img {
+  transition: transform .8s;
+}
+
+.feature-inner:hover .feature-photo img {
+  transform: scale(1.04);
+}
 
 /* FOOTER */
 
 footer {
+  min-height: 95px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  min-height: 95px;
+  gap: 30px;
   border-top: 1px solid var(--line);
   font-size: 11px;
 }
 
 .footer-line {
-  flex: 1;
   height: 1px;
+  flex: 1;
   background: var(--line);
 }
 
-.footer-links { display: flex; gap: 22px; }
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
 
 .footer-links a:hover { color: var(--olive); }
 
-/* ANIMATIONS */
+/* REVEAL */
 
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(22px);
   transition: opacity .8s ease, transform .8s ease;
 }
 
@@ -457,148 +468,139 @@ footer {
   transform: translateY(0);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
 /* TABLET */
 
-@media (max-width: 900px) {
-  .container { padding-inline: 6%; }
+@media(max-width: 900px) {
+  .container {
+    width: calc(100% - 60px);
+  }
 
   .hero {
-    grid-template-columns: .9fr 1.1fr;
-    min-height: 480px;
+    gap: 35px;
+    padding-inline: 0;
   }
 
-  .hero-media { height: 330px; }
+  .hero-visual { height: 350px; }
 
-  .hero-dot {
-    width: 48px;
-    height: 48px;
-    right: -22%;
-  }
-
-  .about { gap: 8%; }
+  .about { gap: 45px; }
 
   .about-visual { height: 290px; }
 
-  .about-copy { grid-template-columns: 1fr; }
+  .gallery-grid { gap: 18px; }
 
-  .side-photo {
-    display: none;
-  }
+  .gallery-image { height: 250px; }
+  .gallery-image.circle { height: 215px; }
 
-  .shape-gallery { gap: 4%; }
-
-  .gallery-photo.lake,
-  .gallery-photo.tent { height: 250px; }
-
-  .gallery-photo.fire { height: 180px; }
-
-  .capsule { min-height: 300px; }
+  .feature-copy { padding: 35px; }
 }
 
 /* MOBILE */
 
-@media (max-width: 620px) {
+@media(max-width: 620px) {
+  .container { width: calc(100% - 40px); }
+
   header { height: 72px; }
 
   nav { gap: 15px; }
-  nav a:nth-child(2),
-  nav a:nth-child(3) { display: none; }
+  nav a:nth-child(2) { display: none; }
 
-  .nav-pill { padding: 10px 13px; }
+  .nav-pill { padding: 9px 12px; }
 
   .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 40px;
-    padding-top: 60px;
+    grid-template-columns: 1fr;
+    gap: 55px;
+    padding: 65px 0 90px;
+  }
+
+  h1 { font-size: clamp(75px, 19vw, 105px); }
+
+  .hero-visual {
+    height: 340px;
+    width: 88%;
+    margin: auto;
+  }
+
+  .hero-dot {
+    width: 43px;
+    height: 43px;
+    right: -18px;
+  }
+
+  .hero-number { right: 0; }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 45px;
     padding-bottom: 90px;
   }
 
-  .hero-copy { padding-left: 0; }
-
-  h1 { font-size: clamp(76px, 18vw, 112px); }
-
-  .hero-media {
-    width: 76%;
-    height: 330px;
-    margin-left: 8%;
-  }
-
-  .hero-outline { left: 18%; }
-  .hero-dot { right: -30%; }
-
-  .hero-index { right: -31%; }
-
-  .about {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 55px;
-    padding-bottom: 85px;
-  }
-
   .about-visual {
-    width: 108%;
-    height: 260px;
-    margin-left: -8%;
+    height: 270px;
+    width: 100%;
   }
 
-  .about-copy { padding-inline: 3%; }
+  .about-copy { padding-inline: 5px; }
 
-  .shape-gallery {
+  .about-small-photo {
+    height: 170px;
+    width: 115px;
+  }
+
+  .gallery { padding-bottom: 85px; }
+
+  .gallery-heading {
+    display: block;
+  }
+
+  .gallery-heading p { max-width: 350px; }
+
+  .gallery-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px 18px;
-    padding-bottom: 80px;
+    gap: 28px 15px;
   }
 
-  .gallery-copy { grid-column: 1 / -1; }
-
-  .gallery-photo.lake { height: 250px; }
-
-  .gallery-photo.fire {
-    height: 175px;
-    align-self: center;
+  .gallery-image { height: 230px; }
+  .gallery-image.circle {
+    height: 185px;
+    margin-top: 30px;
   }
 
-  .gallery-photo.tent {
-    grid-column: 2;
-    height: 230px;
-    margin-top: -35px;
+  .gallery-item:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 72%;
+    margin: 0 auto;
   }
 
-  .capsule-section { padding-bottom: 75px; }
+  .gallery-item:nth-child(3) .gallery-image {
+    height: 250px;
+  }
 
-  .capsule {
+  .feature { padding-bottom: 75px; }
+
+  .feature-inner {
     grid-template-columns: 1fr;
-    border-radius: 65px 0 65px 65px;
+    border-radius: 55px 0 55px 55px;
   }
 
-  .capsule-copy { padding: 45px 9% 25px; }
+  .feature-copy { padding: 40px 30px 25px; }
 
-  .capsule-image {
+  .feature-photo {
     min-height: 230px;
     height: 230px;
-    margin: 0;
-    border-radius: 50% 0 65px 0;
+    border-radius: 50% 0 55px 0;
   }
 
   footer {
     flex-wrap: wrap;
-    padding-block: 25px;
+    padding: 22px 0;
+    gap: 17px;
   }
 
-  .footer-line { min-width: 35px; }
-
-  .footer-links { gap: 13px; }
+  .footer-line { min-width: 25px; }
+  .footer-links { gap: 15px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
@@ -616,122 +618,136 @@ footer {
 <body>
 
 <div class="container">
-  <header>
-    <a class="brand" href="#top">
-      <span class="brand-symbol">+</span>
-      <span>Lorem ipsum</span>
-    </a>
+<header>
+  <a href="#top" class="brand">
+    <span class="brand-symbol">+</span>
+    <span>Lorem ipsum</span>
+  </a>
 
-    <nav aria-label="Lorem ipsum">
-      <a href="#about">Lorem</a>
-      <a href="#gallery">Ipsum</a>
-      <a href="#contact" class="nav-pill">Lorem ipsum</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="#about">Lorem</a>
+    <a href="#gallery">Ipsum</a>
+    <a href="#contact" class="nav-pill">Lorem ipsum</a>
+  </nav>
+</header>
 </div>
 
 <main id="top">
 
-  <section class="hero container">
-    <div class="hero-copy reveal">
-      <div class="eyebrow">Lorem ipsum</div>
-      <h1>Lorem<br><em>ipsum.</em></h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-      <a class="round-link" href="#about" aria-label="Lorem ipsum">↘</a>
+<section class="hero container">
+  <div class="hero-copy reveal">
+    <div class="eyebrow">Lorem ipsum</div>
+    <h1>Lorem<br><em>ipsum.</em></h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    <a href="#about" class="round-link" aria-label="Lorem ipsum">↘</a>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="hero-outline"></div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1100&q=85" alt="Lorem ipsum">
     </div>
+    <div class="hero-dot"></div>
+    <div class="hero-number">01 / 04 &nbsp; ─────</div>
+  </div>
+</section>
 
-    <div class="hero-media reveal">
-      <div class="hero-outline"></div>
-      <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1100&q=85" alt="Lorem ipsum">
-      </div>
-      <span class="hero-dot"></span>
-      <div class="hero-index">01 / 04 &nbsp; ─────</div>
+<section class="about container" id="about">
+  <div class="about-visual reveal">
+    <div class="about-photo">
+      <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1100&q=85" alt="Lorem ipsum">
     </div>
-  </section>
+    <div class="about-outline"></div>
+  </div>
 
-  <section class="about container" id="about">
-    <div class="about-visual reveal">
-      <div class="about-photo">
-        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1100&q=85" alt="Lorem ipsum">
-      </div>
-      <div class="about-outline"></div>
+  <div class="about-copy reveal">
+    <div class="eyebrow">02 — Lorem ipsum</div>
+    <h2>Lorem ipsum<br>dolor sit amet.</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <a href="#gallery" class="text-link">Lorem ipsum <span>→</span></a>
+
+    <div class="about-small-photo">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=85" alt="Lorem ipsum">
     </div>
+  </div>
+</section>
 
-    <div class="about-copy reveal">
-      <div>
-        <div class="eyebrow">02 — Lorem ipsum</div>
-        <h2>Lorem ipsum<br>dolor sit amet.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <a class="text-link" href="#gallery">Lorem ipsum <span>→</span></a>
-      </div>
-
-      <div class="side-photo">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=85" alt="Lorem ipsum">
-      </div>
-    </div>
-  </section>
-
-  <section class="shape-gallery container" id="gallery">
-    <div class="gallery-copy reveal">
+<section class="gallery container" id="gallery">
+  <div class="gallery-heading reveal">
+    <div>
       <div class="eyebrow">03 — Lorem ipsum</div>
       <h2>Lorem ipsum<br>dolor sit amet.</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-      <a class="text-link" href="#contact">Lorem ipsum <span>→</span></a>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <div class="gallery-image arch">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=85" alt="Lorem ipsum">
+      </div>
+      <div class="gallery-caption">
+        <span>Lorem ipsum</span><span>01</span>
+      </div>
     </div>
 
-    <div class="gallery-photo lake reveal">
-      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=85" alt="Lorem ipsum">
-    </div>
-
-    <div class="fire-wrap reveal">
-      <div class="gallery-photo fire">
+    <div class="gallery-item reveal">
+      <div class="gallery-image circle">
         <img src="https://images.unsplash.com/photo-1475483768296-6163e08872a1?auto=format&fit=crop&w=700&q=85" alt="Lorem ipsum">
       </div>
-    </div>
-
-    <div class="gallery-photo tent reveal">
-      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=85" alt="Lorem ipsum">
-    </div>
-  </section>
-
-  <section class="capsule-section container" id="contact">
-    <div class="capsule reveal">
-      <div class="capsule-copy">
-        <div class="eyebrow">04 — Lorem ipsum</div>
-        <h2>Lorem ipsum<br>dolor sit amet.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-        <a class="round-link" href="mailto:example@example.com" aria-label="Lorem ipsum">↗</a>
-      </div>
-
-      <div class="capsule-image">
-        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85" alt="Lorem ipsum">
+      <div class="gallery-caption">
+        <span>Lorem ipsum</span><span>02</span>
       </div>
     </div>
-  </section>
+
+    <div class="gallery-item reveal">
+      <div class="gallery-image side-arch">
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=85" alt="Lorem ipsum">
+      </div>
+      <div class="gallery-caption">
+        <span>Lorem ipsum</span><span>03</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature container" id="contact">
+  <div class="feature-inner reveal">
+    <div class="feature-copy">
+      <div class="eyebrow">04 — Lorem ipsum</div>
+      <h2>Lorem ipsum<br>dolor sit amet.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+      <a href="mailto:example@example.com" class="round-link" aria-label="Lorem ipsum">↗</a>
+    </div>
+
+    <div class="feature-photo">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85" alt="Lorem ipsum">
+    </div>
+  </div>
+</section>
 
 </main>
 
 <div class="container">
-  <footer>
-    <a class="brand" href="#top">
-      <span class="brand-symbol">+</span>
-      <span>Lorem ipsum</span>
-    </a>
+<footer>
+  <a href="#top" class="brand">
+    <span class="brand-symbol">+</span>
+    <span>Lorem ipsum</span>
+  </a>
 
-    <div class="footer-line"></div>
+  <div class="footer-line"></div>
 
-    <div class="footer-links">
-      <a href="#about">Lorem</a>
-      <a href="#gallery">Ipsum</a>
-      <a href="#contact">Dolor</a>
-    </div>
-  </footer>
+  <div class="footer-links">
+    <a href="#about">Lorem</a>
+    <a href="#gallery">Ipsum</a>
+    <a href="#contact">Dolor</a>
+  </div>
+</footer>
 </div>
 
 <script>
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
       observer.unobserve(entry.target);
@@ -739,7 +755,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach((element) => {
+document.querySelectorAll(".reveal").forEach(element => {
   observer.observe(element);
 });
 </script>
